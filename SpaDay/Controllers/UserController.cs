@@ -16,29 +16,40 @@ namespace SpaDay.Controllers
         {
             return View();
         }
-
+/*
         public IActionResult Add()
         {
+            AddUserViewModel addUserViewModel = new AddUserViewModel();
             return View();
         }
 
         [HttpPost]
         [Route("/user")]
-        public IActionResult SubmitAddUserForm(User newUser, string verify)
+        public IActionResult SubmitAddUserForm(AddUserViewModel addUserViewModel)
         {
-            if (newUser.Password == verify)
+            if (ModelState.IsValid == true)
             {
-                ViewBag.user = newUser;
-                return View("Index");
+                User user = new User()
+                {
+                    Password = addUserViewModel.VerifyPassword,
+                };
+                return View(user);
+
             }
             else
             {
-                ViewBag.error = "Passwords do not match! Try again!";
-                ViewBag.userName = newUser.Username;
-                ViewBag.eMail = newUser.Email;
-                return View("Add");
-            }
+                User newUser = new User()
+                {
+
+                    Username = addUserViewModel.Username,
+                    Email = addUserViewModel.Email,
+                };
+                return View("ViewName", newUser);
+            }*/
         }
 
     }
-}
+
+
+
+
